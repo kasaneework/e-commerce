@@ -1,0 +1,65 @@
+<app-top-left></app-top-left>
+
+<div class="detail">
+    <form [formGroup]="myForm" class="mat-elevation-z8" enctype="multipart/form-data">
+        <input type="hidden" formControlName="id">
+
+        <div class="link-nav">
+            <a routerLink="/admin/banners">
+                <i class="material-icons">keyboard_backspace</i> Back
+            </a>
+            <h1>Banner</h1>
+            <span *ngIf="!paramId">Create New</span> <span *ngIf="paramId">Edit</span>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12 mb-1em">
+                <label>Public</label>
+                <div>
+                    <mat-slide-toggle formControlName="bStatus">Click me</mat-slide-toggle>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <label>Banner Name</label>
+                <input class="form-control" formControlName="bName">
+                <small class="error" *ngIf="f.bName.invalid && (f.bName.dirty || f.bName.touched)">*Required</small>
+            </div>
+            <div class="col-md-4">
+                <label>Slug</label>
+                <input class="form-control" formControlName="bSlug">
+                <small class="error" *ngIf="f.bSlug.invalid && (f.bSlug.dirty || f.bSlug.touched)">*Required</small>
+            </div>
+
+            <div class="col-md-12">
+                <label>Banner Title</label>
+                <input class="form-control" formControlName="bTitle">
+                <small class="error" *ngIf="f.bTitle.invalid && (f.bTitle.dirty || f.bTitle.touched)">*Required</small>
+            </div>
+
+            <div class="col-md-12">
+                <label>Images upload</label>
+                <input type="file" class="form-control" multiple (change)="selectMultiple($event)">
+                <!-- --render images befor upload -->
+                <img *ngFor='let url of images' [src]="url" height="150" width="200px" style="margin: 3px;"> <br/>
+                <ng-container *ngIf="ImageDefault">
+                    <hr>
+                    <label>Image</label><br/>
+                    <img class="image" src="{{ImageDefault}}" height="auto" width="300px" style="margin: 3px;"> <br/>
+                </ng-container>
+            </div>
+
+            <div class="col-md-12">
+                <label>Description</label>
+                <textarea class="form-control" formControlName="bDesc" rows="4"></textarea>
+                <small class="error" *ngIf="f.bDesc.invalid && (f.bDesc.dirty || f.bDesc.touched)">*Required</small>
+            </div>
+
+            <div class="col-md-12 txt-center">
+                <button *ngIf="!paramId" class="btn" (click)="submit()" [disabled]="this.myForm.invalid">Submit</button>
+                <button *ngIf="paramId" class="btn" (click)="update()">Update</button>
+            </div>
+        </div>
+    </form>
+</div>

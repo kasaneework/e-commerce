@@ -1,0 +1,27 @@
+::ng-deep {
+    .mat-dialog-container {
+        min-width: 300px;
+        min-height: 300px;
+    }
+    .c-green {
+        text-align: center;
+        width: 100%;
+        color: #28a745;
+        .material-icons {
+            font-size: 10em;
+        }
+    }
+    .c-red {
+        text-align: center;
+        width: 100%;
+        color: #FF6F61;
+        .material-icons {
+            font-size: 10em;
+        }
+    }
+    .mat-button {
+        color: #FF6F61;
+        background-color: #f8f9fa;
+        border: 1px solid #FF6F61;
+    }
+}

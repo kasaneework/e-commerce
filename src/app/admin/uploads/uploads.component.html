@@ -1,0 +1,21 @@
+<div class="detail">
+    <!-- <form> -->
+    <form [formGroup]="myForm">
+        <div class="form-group">
+            <input formControlName="name" class="form-control">
+
+            <label for="file">File</label>
+            <input formControlName="files" id="files" type="file" class="form-control" multiple (change)="selectMultiple($event)">
+
+            <div *ngIf="f.files.touched && f.files.invalid" class="alert alert-danger">
+                <div *ngIf="f.files.errors.required">File is required.</div>
+            </div>
+        </div>
+
+        <img *ngFor='let url of images' [src]="url" height="150" width="200px" style="margin: 3px;"> <br/>
+
+        <button class="btn btn-primary" type="button" (click)="onMultipleSubmit()">Submit</button>
+
+    </form>
+
+</div>

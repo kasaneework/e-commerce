@@ -1,0 +1,121 @@
+<app-top-left></app-top-left>
+
+<div class="detail">
+    <!-- <form [formGroup]="myForm"> -->
+    <form [formGroup]="myForm" class="mat-elevation-z8" enctype="multipart/form-data">
+        <input type="hidden" formControlName="id">
+
+        <div class="link-nav">
+            <a routerLink="/admin/products">
+                <i class="material-icons">keyboard_backspace</i> Back
+            </a>
+            <h1>Product</h1>
+            <span *ngIf="!paramId">Create New</span> <span *ngIf="paramId">Edit</span>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-4 mb-1em">
+                <label>Public</label>
+                <div>
+                    <mat-slide-toggle formControlName="pStatus">Click me</mat-slide-toggle>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-1em">
+                <label>Category</label>
+                <div>
+                    <mat-select class="form-control" formControlName="pCategory">
+                        <!-- <mat-option>Please select</mat-option> -->
+                        <mat-option *ngFor="let cat of categories" [value]="cat.id">
+                            {{cat.name}}
+                        </mat-option>
+                    </mat-select>
+                    <small class="error" *ngIf="f.pCategory.invalid && (f.pCategory.dirty || f.pCategory.touched)">*Required</small>
+                </div>
+            </div>
+            <div class="col-md-4 mb-1em">&nbsp;</div>
+
+
+            <div class="col-md-4">
+                <label>Product Name</label>
+                <input class="form-control" formControlName="pName">
+                <small class="error" *ngIf="f.pName.invalid && (f.pName.dirty || f.pName.touched)">*Required</small>
+            </div>
+            <div class="col-md-4">
+                <label>Slug</label>
+                <input class="form-control" formControlName="pSlug">
+                <small class="error" *ngIf="f.pSlug.invalid && (f.pSlug.dirty || f.pSlug.touched)">*Required</small>
+            </div>
+
+            <div class="col-md-4">
+                <label>Qty</label>
+                <input class="form-control" formControlName="pQty">
+                <small class="error" *ngIf="f.pQty.invalid && (f.pQty.dirty || f.pQty.touched)">*Required</small>
+            </div>
+
+            <div class="col-md-4">
+                <label>Price</label>
+                <input class="form-control" formControlName="pPrice">
+                <small class="error" *ngIf="f.pPrice.invalid && (f.pPrice.dirty || f.pPrice.touched)">*Required</small>
+            </div>
+
+            <div class="col-md-4">
+                <label>Price Sale</label>
+                <input class="form-control" formControlName="pPriceSale">
+            </div>
+
+            <div class="col-md-4">
+                <label>Size</label>
+                <input class="form-control" formControlName="pSize">
+                <small class="error" *ngIf="f.pSize.invalid && (f.pSize.dirty || f.pSize.touched)">*Required</small>
+            </div>
+
+            <div class="col-md-4">
+                <label>Color</label>
+                <input class="form-control" formControlName="pColor">
+                <small class="error" *ngIf="f.pColor.invalid && (f.pColor.dirty || f.pColor.touched)">*Required</small>
+            </div>
+
+            <div class="col-md-12">
+                <label>Images upload</label>
+                <input type="file" class="form-control" multiple (change)="selectMultiple($event)">
+                <!-- --render images befor upload -->
+                <img *ngFor='let url of images' [src]="url" height="150" width="200px" style="margin: 3px;"> <br/>
+                <ng-container *ngIf="ImageDefault">
+                    <hr>
+                    <label>Images Default</label><br/>
+                    <img class="image" src="{{ImageDefault}}" height="auto" width="300px" style="margin: 3px;"> <br/>
+                    <hr>
+                    <label>Images all</label><br/>
+                    <div class="img-wrap">
+                        <div *ngFor="let img of ImagesAll" class="img-main">
+                            <img class="image" (click)="changeImageDefault(img.name)" src="{{img.url}}" height="auto" width="300px" style="margin: 3px;">
+                            <a *ngIf="ImageDefault !== img.url" (click)="delimg(img)" class="del" title="delete iamge"><i class="material-icons">delete_outline</i></a>
+                        </div>
+                    </div>
+
+                </ng-container>
+
+            </div>
+
+            <div class="col-md-12">
+                <label>Description</label>
+                <textarea class="form-control" formControlName="pDesc" rows="4"></textarea>
+                <small class="error" *ngIf="f.pDesc.invalid && (f.pDesc.dirty || f.pDesc.touched)">*Required</small>
+            </div>
+
+            <div class="col-md-12">
+                <label>Specification</label>
+                <textarea class="form-control" formControlName="pSpecification" rows="4"></textarea>
+                <small class="error" *ngIf="f.pSpecification.invalid && (f.pSpecification.dirty || f.pSpecification.touched)">*Required</small>
+            </div>
+
+
+            <div class="col-md-12 txt-center">
+                <button *ngIf="!paramId" class="btn" (click)="submit()" [disabled]="this.myForm.invalid">Submit</button>
+                <button *ngIf="paramId" class="btn" (click)="update()">Update</button>
+            </div>
+        </div>
+    </form>
+</div>

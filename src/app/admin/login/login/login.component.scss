@@ -1,0 +1,21 @@
+@import '../../admin.scss';
+.top {
+    height: 20vh;
+}
+
+form {
+    background: none;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.login {
+    height: 65vh;
+    .admin-content {
+        height: 65vh;
+    }
+}
+
+.footer {
+    height: 15vh;
+}

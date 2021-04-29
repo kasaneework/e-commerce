@@ -1,0 +1,257 @@
+html,
+body {
+    overflow: hidden;
+}
+
+body {
+    position: relative;
+}
+
+div {
+    border: 0px solid;
+}
+
+.main {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 10vh;
+    background-color: #ffffff;
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.admin-content {
+    height: 77vh;
+    display: grid;
+}
+
+.admin-content-detail {
+    height: 77vh;
+    display: grid;
+    grid-template-columns: 25% auto;
+    gap: 5px;
+}
+
+.btn-main {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.txt-center {
+    text-align: center;
+}
+
+.txt-left {
+    text-align: left;
+}
+
+.mb-1em {
+    margin-bottom: 1em;
+}
+
+form {
+    width: 100%;
+    padding: 2em;
+    background: #fff;
+}
+
+textarea.form-control {
+    height: auto;
+    padding: 1em;
+}
+
+.link-nav {
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: uppercase;
+    a {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.search {
+    max-width: 500px;
+    width: auto;
+}
+
+.action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    i {
+        color: #353535;
+        font-size: 20px;
+        &:hover {
+            color: #FF6F61;
+        }
+    }
+}
+
+ul {
+    width: 100%;
+}
+
+.left {
+    z-index: 999;
+    position: absolute;
+    width: 250px;
+    height: 88vh;
+    // box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%) !important;
+    margin-top: 5px;
+    .navbar {
+        align-items: start;
+        height: 83vh;
+        overflow: hidden;
+        background: #ffffff !important;
+        .nav-item {
+            border-bottom: 1px solid #f3f6ff;
+        }
+        .nav-item .active {
+            background-color: #f8f9fa;
+            color: #007bff;
+            border-bottom: 1px solid #FF6F61;
+            i {
+                color: #007bff;
+            }
+        }
+    }
+    .nav-link {
+        color: #353535;
+        i {
+            line-height: 1.5em;
+            color: #FF6F61;
+            width: 20px;
+            margin-right: 8px;
+        }
+    }
+    .nav-link:hover {
+        color: #FF6F61;
+        i {
+            color: #353535;
+        }
+    }
+}
+
+.detail {
+    width: 100%;
+    height: 90vh;
+    padding: 1em;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    position: fixed;
+    padding-left: 270px;
+    padding-top: 5px;
+    overflow-y: auto;
+     ::after {
+        clear: both;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 350px));
+        gap: 1em;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .grid>div {
+        min-height: 150px;
+        padding: 1em;
+        color: #fff;
+        font-size: large;
+        border-radius: 10px;
+    }
+}
+
+//--table list
+table {
+    width: 100%;
+}
+
+img.image {
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    &:hover {
+        border: 1px solid #FF6F61;
+    }
+}
+
+.img-wrap {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    .img-main {
+        position: relative;
+        a.del {
+            position: absolute;
+            top: 0.5em;
+            right: 0.5em;
+            color: #353535;
+            cursor: pointer;
+            &:hover {
+                color: #FF6F61;
+            }
+        }
+    }
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+td,
+th {
+    width: auto;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.thumb {
+    vertical-align: middle;
+    border-style: none;
+    max-width: 200px;
+    max-height: 100px;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+//--end table list
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 5vh;
+    background-color: #ffffff;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+//--for Material
+::ng-deep {
+    .mat-select {
+        padding: 5px;
+    }
+}

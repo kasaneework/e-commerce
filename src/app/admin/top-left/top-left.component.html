@@ -1,0 +1,27 @@
+<div class="top">
+    <div class="container-fluid flex">
+        <div class="logo  txt-left">
+            <img _ngcontent-odn-c49="" src="assets/img/logo.png" alt="Logo">
+        </div>
+
+        <div *ngIf="admin">
+            {{this.adminData.firstname}} {{this.adminData.lastname}}
+            <button class="btn" (click)="adminLogout()">Loguot</button>
+        </div>
+    </div>
+</div>
+<div class="left mat-elevation-z8">
+    <div class="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a routerLink="/admin/dashboard" routerLinkActive="active" class="nav-link"><i  class="fa fa-tachometer-alt"></i>Dashboard</a></li>
+            <li class="nav-item"><a routerLink="/admin/categories" routerLinkActive="active" class="nav-link"><i  class="fa fa-shopping-bag"></i>Categories</a></li>
+            <li class="nav-item"><a routerLink="/admin/products" routerLinkActive="active" class="nav-link"><i  class="fa fa-shopping-bag"></i>Products</a></li>
+            <li class="nav-item"><a routerLink="/admin/banners" routerLinkActive="active" class="nav-link"><i  class="fa fa-plus-square"></i>Banners</a></li>
+            <li class="nav-item"><a routerLink="/admin/users" routerLinkActive="active" class="nav-link"><i  class="fa fa-child"></i>Users</a></li>
+            <li class="nav-item"><a routerLink="/admin/admins" routerLinkActive="active" class="nav-link"><i  class="fa fa-female"></i>Admins</a></li>
+        </ul>
+    </div>
+    <div class="footer">
+        Copyright © 2021. All rights reserved.
+    </div>
+</div>

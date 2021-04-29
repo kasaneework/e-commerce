@@ -1,0 +1,111 @@
+<app-main-top></app-main-top>
+
+<!-- Breadcrumb Start -->
+<app-breadcrumb></app-breadcrumb>
+<!-- Breadcrumb End -->
+
+<!-- Login Start -->
+<div class="login">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <form [formGroup]="registerForm">
+                    <div class="register-form">
+                        <h2 class="title">Register</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>First Name</label>
+                                <input class="form-control" formControlName="firstname">
+                                <small class="error" *ngIf="freg.firstname.invalid && (freg.firstname.dirty || freg.firstname.touched)">
+                                  *Required
+                                </small>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Last Name</label>
+                                <input class="form-control" formControlName="lastname">
+                                <small class="error" *ngIf="freg.lastname.invalid && (freg.lastname.dirty || freg.lastname.touched)">
+                                  *Required
+                                </small>
+                            </div>
+                            <div class="col-md-6">
+                                <label>E-mail / Username</label>
+                                <input class="form-control" formControlName="email">
+                                <small class="error" *ngIf="freg.email.invalid && (freg.email.dirty || freg.email.touched)">
+                                  *Required / E-mail
+                                </small>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Phone No</label>
+                                <input class="form-control" formControlName="phone">
+                                <small class="error" *ngIf="freg.phone.invalid && (freg.phone.dirty || freg.phone.touched)">
+                                  *Required
+                                </small>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Password</label>
+                                <input class="form-control" type="password" formControlName="password">
+                                <small class="error" *ngIf="freg.password.invalid && (freg.password.dirty || freg.password.touched)">
+                                  *Required / minLength 6
+                                </small>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Retype Password</label>
+                                <input class="form-control" type="password" formControlName="confirm_password" (input)="checkPasswords([freg.password.value, freg.confirm_password.value])">
+                                <small class="error" *ngIf="freg.confirm_password.invalid && (freg.confirm_password.dirty || freg.confirm_password.touched)">
+                                  *Required
+                                </small>
+                                <small class="error" *ngIf="!this.isPassMatch && freg.confirm_password.valid && (freg.confirm_password.dirty || freg.confirm_password.touched)">
+                                  *Retype Password not match
+                                </small>
+                            </div>
+                            <div class="col-md-12" *ngIf="this.customError.status">
+                                <p class="error">{{this.customError.message}}</p>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn" (click)="register()" [disabled]="!this.isPassMatch || this.registerForm.invalid">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-6">
+                <form [formGroup]="loginForm">
+                    <div class="login-form">
+                        <h2 class="title">Login</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>E-mail / Username</label>
+                                <input class="form-control" formControlName="username">
+                                <small class="error" *ngIf="loginForm.controls.username.invalid && (loginForm.controls.username.dirty || loginForm.controls.username.touched)">
+                                  *Required / E-mail
+                                </small>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Password</label>
+                                <input type="password" class="form-control" formControlName="password">
+                                <small class="error" *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
+                                  *Required / minLength 6
+                                </small>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="newaccount">
+                                    <label class="custom-control-label" for="newaccount">Keep me signed in</label>
+                                </div>
+                            </div>
+                            <div class="col-md-12" *ngIf="this.customError2.status">
+                                <p class="error">{{this.customError2.message}}</p>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn" (click)="userLogin()" [disabled]="this.loginForm.invalid">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Login End -->
+
+<app-main-footer></app-main-footer>

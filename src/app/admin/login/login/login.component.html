@@ -1,0 +1,49 @@
+<div class="top">
+    <div class="container-fluid txt-center">
+        <div class="logo">
+            <img _ngcontent-odn-c49="" src="assets/img/logo.png" alt="Logo">
+        </div>
+    </div>
+</div>
+<div class="login">
+    <div class="container-fluid admin-content">
+        <form [formGroup]="loginForm">
+            <div class="login-form">
+                <h2 class="title">Admin Login</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>E-mail / Username</label>
+                        <input class="form-control" formControlName="username">
+                        <small class="error" *ngIf="loginForm.controls.username.invalid && (loginForm.controls.username.dirty || loginForm.controls.username.touched)">
+                                  *Required / E-mail
+                                </small>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Password</label>
+                        <input type="password" class="form-control" formControlName="password">
+                        <small class="error" *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
+                                  *Required / minLength 6
+                                </small>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="newaccount">
+                            <label class="custom-control-label" for="newaccount">Keep me signed in</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12" *ngIf="this.customError2.status">
+                        <p class="error">{{this.customError2.message}}</p>
+                    </div>
+                    <div class="col-md-12 btn-main">
+                        <button class="btn" (click)="adminLogin()" [disabled]="this.loginForm.invalid">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="footer">
+    <div class="container-fluid txt-center">
+        Copyright © 2021. All rights reserved.
+    </div>
+</div>

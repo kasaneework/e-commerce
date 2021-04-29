@@ -1,0 +1,39 @@
+<div class="nav">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+            <a href="#" class="navbar-brand">MENU</a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav mr-auto">
+                    <a routerLink="/home" routerLinkActive="active" class="nav-item nav-link">Home</a>
+                    <a routerLink="/products" routerLinkActive="active" class="nav-item nav-link">Products</a>
+                    <a routerLink="/product-detail" routerLinkActive="active" class="nav-item nav-link">Product Detail</a>
+                    <a routerLink="/cart" routerLinkActive="active" class="nav-item nav-link">Cart</a>
+                    <a routerLink="/checkout" routerLinkActive="active" class="nav-item nav-link">Checkout</a>
+                    <a *ngIf="user" routerLink="/my-account" routerLinkActive="active" class="nav-item nav-link">My Account</a>
+                </div>
+                <div class="navbar-nav ml-auto" *ngIf="!user">
+                    <div class="nav-item dropdown">
+                        <span href="#" class="nav-link dropdown-toggle" (mouseover)="mainOver()" (mouseout)="mainOut()">User Account</span>
+                        <div class="dropdown-menu" (mouseover)="childOver()" (mouseout)="childOut()" [ngClass]="(menu.main || menu.child)? 'showBlock':''">
+                            <a routerLink="/login" class="dropdown-item">Login</a>
+                            <a routerLink="/login" class="dropdown-item">Register</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-nav ml-auto" *ngIf="user">
+                    <div class="nav-item dropdown">
+                        <span href="#" class="nav-link dropdown-toggle" (mouseover)="mainOver()" (mouseout)="mainOut()">{{this.userData.firstname}} {{this.userData.lastname}}</span>
+                        <div class="dropdown-menu" (mouseover)="childOver()" (mouseout)="childOut()" [ngClass]="(menu.main || menu.child)? 'showBlock':''">
+                            <a routerLink="/my-account" class="dropdown-item">My account</a>
+                            <a class="dropdown-item" (click)="logout()">Loguot</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>

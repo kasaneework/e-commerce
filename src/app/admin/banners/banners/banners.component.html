@@ -1,0 +1,87 @@
+<app-top-left></app-top-left>
+
+<div class="detail">
+
+    <div class="link-nav">
+        <span>&nbsp;</span>
+        <a class="btn" routerLink="/admin/banner-adedit">Create New</a>
+    </div>
+
+    <div class="search">
+        <mat-form-field>
+            <mat-label>Search</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. text" #input>
+        </mat-form-field>
+    </div>
+
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+            <!-- id -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> No </th>
+                <td mat-cell *matCellDef="let row; let i = index;">{{i+1}} </td>
+            </ng-container>
+
+            <!-- Image -->
+            <ng-container matColumnDef="bImage">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
+                <td mat-cell *matCellDef="let row">
+                    <a routerLink="/admin/banner-adedit/{{row.id}}">
+                        <img class="thumb" src="{{imgPath}}{{row.bImage}}" alt="">
+                    </a>
+                </td>
+            </ng-container>
+
+            <!-- Status -->
+            <ng-container matColumnDef="bStatus">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Public </th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-slide-toggle [checked]="row.bStatus" (change)="onToggle($event, row.id)"></mat-slide-toggle>
+                </td>
+            </ng-container>
+
+            <!-- Name -->
+            <ng-container matColumnDef="bName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                <td mat-cell *matCellDef="let row"> {{row.bName}} </td>
+            </ng-container>
+
+            <!-- Title -->
+            <ng-container matColumnDef="bTitle">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+                <td mat-cell *matCellDef="let row"> {{row.bTitle}} </td>
+            </ng-container>
+
+            <!-- createAt -->
+            <ng-container matColumnDef="createdAt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Create date </th>
+                <td mat-cell *matCellDef="let row"> {{row.createdAt | date:'YYYY-MM-dd'}} </td>
+            </ng-container>
+
+            <!-- createAt -->
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+                <td mat-cell *matCellDef="let row">
+                    <a class="action" routerLink="/admin/banner-adedit/{{row.id}}">
+                        <i class="material-icons">mode_edit</i>
+                    </a>
+                    <a class="action" (click)="confirmDialog(row.id)">
+                        <i class="material-icons">delete_outline</i>
+                    </a>
+
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="6">No data matching the filter "{{input.value}}"</td>
+            </tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+
+</div>

@@ -1,0 +1,61 @@
+<app-top-left></app-top-left>
+
+<div class="detail">
+    <form [formGroup]="myForm" class="mat-elevation-z8" enctype="multipart/form-data">
+        <input type="hidden" formControlName="id">
+
+        <div class="link-nav">
+            <a routerLink="/admin/users">
+                <i class="material-icons">keyboard_backspace</i> Back
+            </a>
+            <h1>User</h1>
+            <span *ngIf="!paramId">Create New</span> <span *ngIf="paramId">Edit</span>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12 mb-1em">
+                <label>Public</label>
+                <div>
+                    <mat-slide-toggle formControlName="status">Click me</mat-slide-toggle>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <label>First Name</label>
+                <input class="form-control" formControlName="firstname">
+                <small class="error" *ngIf="f.firstname.invalid && (f.firstname.dirty || f.firstname.touched)">*Required</small>
+            </div>
+            <div class="col-md-4">
+                <label>Last Name</label>
+                <input class="form-control" formControlName="lastname">
+                <small class="error" *ngIf="f.lastname.invalid && (f.lastname.dirty || f.lastname.touched)">*Required</small>
+            </div>
+
+            <div class="col-md-4">
+                <label>Email</label>
+                <input class="form-control" formControlName="email">
+                <small class="error" *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)">*Required</small>
+            </div>
+
+            <div class="col-md-4" *ngIf="!paramId">
+                <label>Password</label>
+                <input type="password" class="form-control" formControlName="password">
+                <small class="error" *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">*Required</small>
+            </div>
+
+            <div class="col-md-12 txt-center" *ngIf="this.Errors.status">
+                <div class="error">{{this.Errors.msg}}</div>
+            </div>
+
+            <div class="col-md-12 txt-center">
+                <button *ngIf="!paramId" class="btn" (click)="submit()" [disabled]="this.myForm.invalid">Submit</button>
+                <button *ngIf="paramId" class="btn" (click)="update()">Update</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+1

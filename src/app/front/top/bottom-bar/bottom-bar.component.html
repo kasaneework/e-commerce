@@ -1,0 +1,29 @@
+<div class="bottom-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/img/logo.png" alt="Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <app-search></app-search>
+            </div>
+            <div class="col-md-3">
+                <div class="user">
+                    <a routerLink="/wishlist" class="btn wishlist">
+                        <i class="fa fa-heart"></i>
+                        <span>(0)</span>
+                    </a>
+                    <a routerLink="/cart" class="btn cart">
+                        <i class="fa fa-shopping-cart"></i>
+                        <!-- <span>(0)</span> -->
+                        <span>({{cart.cart}})</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
