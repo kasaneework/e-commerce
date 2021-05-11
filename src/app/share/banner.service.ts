@@ -23,8 +23,8 @@ export class BannerService {
       console.log('res-', res);
       if(res){
         // console.log('res.data-', res.data);
+        return res.data;
       }
-      return res.data;
     } catch (error) {
       console.error(error);
     }

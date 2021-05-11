@@ -3,6 +3,7 @@ export interface IProduct {
   pName: string;
   pSlug: string;
   pStatus: boolean;
+  pFeatured: boolean;
   pCategory: number;
   pQty: number;
   pPrice: number;

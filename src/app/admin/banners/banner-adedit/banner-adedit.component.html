@@ -39,6 +39,12 @@
             </div>
 
             <div class="col-md-12">
+                <label>Banner Link</label>
+                <input class="form-control" formControlName="bLink">
+                <small class="error" *ngIf="f.bLink.invalid && (f.bLink.dirty || f.bLink.touched)">*Required</small>
+            </div>
+
+            <div class="col-md-12">
                 <label>Images upload</label>
                 <input type="file" class="form-control" multiple (change)="selectMultiple($event)">
                 <!-- --render images befor upload -->
@@ -58,7 +64,7 @@
 
             <div class="col-md-12 txt-center">
                 <button *ngIf="!paramId" class="btn" (click)="submit()" [disabled]="this.myForm.invalid">Submit</button>
-                <button *ngIf="paramId" class="btn" (click)="update()">Update</button>
+                <button *ngIf="paramId" class="btn" (click)="update()" [disabled]="this.myForm.invalid">Update</button>
             </div>
         </div>
     </form>

@@ -23,6 +23,13 @@
             </div>
 
             <div class="col-md-4 mb-1em">
+                <label>Featured</label>
+                <div>
+                    <mat-slide-toggle formControlName="pFeatured">Click me</mat-slide-toggle>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-1em">
                 <label>Category</label>
                 <div>
                     <mat-select class="form-control" formControlName="pCategory">
@@ -34,8 +41,6 @@
                     <small class="error" *ngIf="f.pCategory.invalid && (f.pCategory.dirty || f.pCategory.touched)">*Required</small>
                 </div>
             </div>
-            <div class="col-md-4 mb-1em">&nbsp;</div>
-
 
             <div class="col-md-4">
                 <label>Product Name</label>

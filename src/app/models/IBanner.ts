@@ -3,6 +3,7 @@ export interface IBanner {
   bName: string;
   bSlug: string;
   bTitle: string;
+  bLink: string;
   bStatus: boolean;
   bDesc: string;
   bImage: string;
