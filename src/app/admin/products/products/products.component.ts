@@ -19,7 +19,7 @@ export class ProductsComponent implements OnInit {
 
   imgPath: string = environment.image_path;
 
-  displayedColumns: string[] = ['id', 'pImapImageDefaultges', 'pCategory', 'pStatus', 'pName', 'pQty', 'pPrice', 'pPriceSale', 'createdAt', 'actions'];
+  displayedColumns: string[] = ['id', 'pImapImageDefaultges', 'pCategory', 'pFeatured', 'pStatus', 'pName', 'pQty', 'pPrice', 'pPriceSale', 'createdAt', 'actions'];
   dataSource: MatTableDataSource<IProduct>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

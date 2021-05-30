@@ -25,7 +25,7 @@
                                 <tr *ngFor="let item of cartItem; let i = index">
                                     <td>
                                         <div class="img">
-                                            <a href="#"><img src="assets/img/{{item.data.pImageDefault}}" alt="Image"></a>
+                                            <a href="#"><img src="{{imgPath}}{{item.data.pImageDefault}}" alt="{{item.data.pName}}"></a>
                                             <p>{{item.data.pName}}</p>
                                         </div>
                                     </td>

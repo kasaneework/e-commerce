@@ -27,9 +27,50 @@ export class ProductService {
     }
   }
 
+  async getFeatured(){
+    try {
+      const res = await axios.get(`${this.apiURL}/api/${this.apiPath}/getfeatured`);
+      console.log('res.data-', res.data);
+      return res.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async getRecent(){
+    try {
+      const res = await axios.get(`${this.apiURL}/api/${this.apiPath}/getrecent`);
+      console.log('res.data-', res.data);
+      return res.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async recentClick(slug){
+    try {
+      const res = await axios.get(`${this.apiURL}/api/${this.apiPath}/recentclick/${slug}`);
+      console.log('res.data-', res.data);
+      return res.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   async getOne(id=0){
     try {
       const res = await axios.get(`${this.apiURL}/api/${this.apiPath}/${id}`);
+      // console.log('res.data-', res);
+      return res;
+    } catch (error) {
+      // console.error(error);
+      console.log(error);
+    }
+  }
+
+  async getSlug(slug){
+    try {
+      const res = await axios.get(`${this.apiURL}/api/${this.apiPath}/getslug/${slug}`);
       // console.log('res.data-', res);
       return res;
     } catch (error) {

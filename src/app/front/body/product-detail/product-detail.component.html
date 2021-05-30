@@ -1,7 +1,16 @@
 <app-main-top></app-main-top>
 
 <!-- Breadcrumb Start -->
-<app-breadcrumb></app-breadcrumb>
+<!-- <app-breadcrumb></app-breadcrumb> -->
+<div class="breadcrumb-wrap">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+            <li class="breadcrumb-item"><a routerLink="/products">Product List</a></li>
+            <li class="breadcrumb-item active">{{product?.pName}}</li>
+        </ul>
+    </div>
+</div>
 <!-- Breadcrumb End -->
 
 <!-- Product Detail Start -->
@@ -12,15 +21,16 @@
                 <div class="product-detail-top">
                     <div class="row align-items-center">
                         <div class="col-md-5">
-                            <div class="product-slider-single normal-slider">
-                                <img src="assets/img/{{pImageDefault}}" alt="Product Image">
-                            </div>
-                            <!-- <div *ngFor="let img of pImages; let i = index" class="product-slider-single-nav normal-slider">
-                                <div class="slider-nav-img"><img src="assets/img/{{img}}" alt="Product Image"></div>
-                            </div> -->
-                            <div class="product-slider-single-nav normal-slider">
-                                <div class="slider-nav-img"><img src="assets/img/{{pImages[0]}}" alt="Product Image"></div>
-                            </div>
+                            <ng-container *ngIf="pImageDefault">
+                                <div class="product-slider-single normal-slider">
+                                    <img src="{{imgPath}}{{pImageDefault}}" alt="Product Image">
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="ImagesAll">
+                                <div *ngFor="let img of ImagesAll; let i = index" class="product-slider-single-nav normal-slider">
+                                    <div class="slider-nav-img"><img src="{{imgPath}}{{img.name}}" alt="Product Image"></div>
+                                </div>
+                            </ng-container>
                         </div>
                         <div class="col-md-7">
                             <div class="product-content">

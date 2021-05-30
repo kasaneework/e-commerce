@@ -1,7 +1,15 @@
 <app-main-top></app-main-top>
 
 <!-- Breadcrumb Start -->
-<app-breadcrumb></app-breadcrumb>
+<!-- <app-breadcrumb></app-breadcrumb> -->
+<div class="breadcrumb-wrap">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+            <li class="breadcrumb-item active">Product List</li>
+        </ul>
+    </div>
+</div>
 <!-- Breadcrumb End -->
 <!-- Product List Start -->
 <div class="product-view">
@@ -56,7 +64,7 @@
                     <div class="col-md-4" *ngFor="let product of products; let i = index">
                         <div class="product-item">
                             <div class="product-title">
-                                <a routerLink="/product-detail/{{product.pSlug}}">{{product.pName}}</a>
+                                <a routerLink="/product-detail/{{product.pSlug}}" (click)="recentClick(product.pSlug)">{{product.pName}}</a>
                                 <div class="ratting">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -67,12 +75,12 @@
                             </div>
                             <div class="product-image">
                                 <a routerLink="/product-detail/{{product.pSlug}}">
-                                    <img src="assets/img/{{product.pImageDefault}}" alt="Product Image">
+                                    <img src="{{imgPath}}{{product.pImageDefault}}" alt="Product Image">
                                 </a>
                                 <div class="product-action">
                                     <a (click)="add2cart(1,product)"><i class="fa fa-cart-plus"></i></a>
                                     <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-search"></i></a>
+                                    <a routerLink="/product-detail/{{product.pSlug}}" (click)="recentClick(product.pSlug)"><i class="fa fa-search"></i></a>
                                 </div>
                             </div>
                             <div class="product-price">

@@ -19,7 +19,7 @@ export class CategoriesComponent implements OnInit {
 
   imgPath: string = environment.image_path;
 
-  displayedColumns: string[] = ['id', 'cImage', 'cStatus', 'cName', 'createdAt', 'actions'];
+  displayedColumns: string[] = ['id', 'cImage', 'cFeatured', 'cStatus', 'cName', 'createdAt', 'actions'];
   dataSource: MatTableDataSource<ICategory>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

@@ -3,6 +3,9 @@ import {DataService} from '../../../share/data.service'
 import axios from 'axios';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { ProductService } from 'src/app/share/product.service';
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -10,14 +13,19 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 
 export class ProductDetailComponent implements OnInit {
-  [x: string]: any;
-
-  cart:any;  products; product; slug;
+  cart:any;
+  products;
+  product;
+  slug;
   qtyDefault=1;
-  pImageDefault='blank.jpg';
-  pImages=['blank.jpg'];
+  pImageDefault;
+  pImages=[];
+  ImagesAll = [];
+  imgPath: string = environment.image_path;
+
   constructor(
     private dataService:DataService,
+    private productService:ProductService,
     private router: Router,
     private actRoute: ActivatedRoute
     ) { }
@@ -30,36 +38,32 @@ export class ProductDetailComponent implements OnInit {
 
     this.dataService.currentCart.subscribe(editCart => (this.cart= editCart)); //<= Always get current value!
 
-    this.getProductOne(this.slug);
+    this.getSlug(this.slug);
   }
 
   // Want to use async/await? Add the `async` keyword to your outer function/method.
-  async getProductOne(slug) {
-    try {
-      const response = await axios.get('assets/data/products.json');
-      console.log('response.data-', response.data);
-      console.log('response.status-', response.status);
-      // console.log('response.statusText-', response.statusText);
-      // console.log('response.headers-', response.headers);
-      // console.log('response.config-', response.config);
-      this.products = response.data;
+  async getSlug(slug) {
 
-      //----------
-      // let chkSlug =  this.products[this.products.findIndex(obj => obj.pSlug === slug)];
-      // console.log('chkSlug-', chkSlug);
-      if(this.products[this.products.findIndex(obj => obj.pSlug === slug)]){
+    console.log('getSlug');
+    const res = await this.productService.getSlug(slug);
 
-        this.product = this.products[this.products.findIndex(obj => obj.pSlug === slug)];
-        console.log('this.product-', this.product);
-        this.pImageDefault = this.product.pImageDefault;
-        this.pImages = this.product.pImages;
-      }else{
-        this.router.navigate(["products"]);
+    if(res.status === 200){
+      this.product = res.data.data;
+      console.log('product->>', this.product);
+      this.pImageDefault = this.product.pImageDefault;
+      // this.pImages = this.product.pImages;
+
+      let tmp_images = this.product.pImages.split(',');
+      if(tmp_images){
+        tmp_images.forEach( (value, index) => {
+          // this.ImagesAll.push({name: value, url: this.imagePath + value});
+          this.ImagesAll.push({name: value});
+        });
       }
-      //----------
-
-    } catch (error) {
-      console.error(error);
+      console.log('this.ImagesAll->>', this.ImagesAll);
+    }else{
+      console.log(res.message);
+      this.router.navigate(["products"]);
     }
   }
 

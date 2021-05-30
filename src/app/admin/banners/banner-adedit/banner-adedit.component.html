@@ -39,7 +39,7 @@
             </div>
 
             <div class="col-md-12">
-                <label>Banner Link</label>
+                <label>Banner Link <small class="error">**please add full path ['http://' or 'https://'] www.example.com</small></label>
                 <input class="form-control" formControlName="bLink">
                 <small class="error" *ngIf="f.bLink.invalid && (f.bLink.dirty || f.bLink.touched)">*Required</small>
             </div>

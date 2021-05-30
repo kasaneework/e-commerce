@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {DataService} from '../../../share/data.service'
 import axios from 'axios';
 import { Router } from '@angular/router';
+import { ProductService } from 'src/app/share/product.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-products',
@@ -9,11 +11,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  // [x: string]: any;
   cart:any;
   products;
+  imgPath: string = environment.image_path;
+
   constructor(
     private dataService:DataService,
+    private productService:ProductService,
     private router: Router
     ) { }
 
@@ -23,18 +27,12 @@ export class ProductsComponent implements OnInit {
     this.getProduct();
   }
 
-  // Want to use async/await? Add the `async` keyword to your outer function/method.
-  async getProduct() {
-    try {
-      const response = await axios.get('assets/data/products.json');
-      console.log('response.data-', response.data);
-      console.log('response.status-', response.status);
-      // console.log('response.statusText-', response.statusText);
-      // console.log('response.headers-', response.headers);
-      // console.log('response.config-', response.config);
-      this.products = response.data;
-    } catch (error) {
-      console.error(error);
+ async getProduct() {
+    const data = await this.productService.getAll();
+    // console.log('data-', data);
+    if(data){
+      this.products = data.data;
+      console.log('this.products-', this.products);
     }
   }
 
@@ -53,6 +51,13 @@ export class ProductsComponent implements OnInit {
   }
   buynow(){
     this.router.navigate(["cart"]);
+  }
+
+  recentClick(slug){
+    const recent = this.productService.recentClick(slug);
+    if(recent){
+      console.log('recent-', recent);
+    }
   }
 
 }

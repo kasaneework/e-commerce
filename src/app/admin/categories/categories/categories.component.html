@@ -32,6 +32,15 @@
                 </td>
             </ng-container>
 
+            <!-- Featured -->
+            <ng-container matColumnDef="cFeatured">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Featured </th>
+                <td mat-cell *matCellDef="let row">
+                    <span *ngIf="row.cFeatured">Yes</span>
+                    <span *ngIf="!row.cFeatured">No</span>
+                </td>
+            </ng-container>
+
             <!-- Status -->
             <ng-container matColumnDef="cStatus">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Public </th>

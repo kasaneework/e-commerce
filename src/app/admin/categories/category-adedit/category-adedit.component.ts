@@ -49,6 +49,7 @@ export class CategoryAdeditComponent implements OnInit {
       cName: ['', Validators.required],
       cSlug: ['', Validators.required],
       cStatus: [''],
+      cFeatured: [''],
       cDesc: ['', Validators.required],
       cImage: [''],
     });
@@ -90,6 +91,7 @@ export class CategoryAdeditComponent implements OnInit {
       cName: this.data.cName,
       cSlug: this.data.cSlug,
       cStatus: this.data.cStatus,
+      cFeatured: this.data.cFeatured,
       cDesc: this.data.cDesc,
       cImage: this.data.cImage,
     });

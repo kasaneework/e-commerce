@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DataService} from '../../../share/data.service'
 import axios from 'axios';
 import { Router, ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cart',
@@ -12,6 +13,8 @@ export class CartComponent implements OnInit {
   products;
   cart;
   cartItem=[]; // for car list show
+  imgPath: string = environment.image_path;
+
   constructor(
     private dataService:DataService,
     private router: Router,
@@ -33,12 +36,13 @@ export class CartComponent implements OnInit {
     console.log('items--', items.products);
 
     items.products.forEach( (item, index) => {
+      console.log('item--', item);
       if(index<=0){
         //--first loop
         //--add new
         //--set data object
         let tmpData = {
-          pId : item.pId,
+          pId : item.id,
           qty: 1,
           price: item.pPriceSale ? item.pPriceSale: item.pPrice,
           data: item
@@ -47,17 +51,17 @@ export class CartComponent implements OnInit {
       }else{
         //---------------
         // after first loop check same pId and add qty
-        if(this.cartItem[this.cartItem.findIndex(obj => obj.pId === item.pId)]){
+        if(this.cartItem[this.cartItem.findIndex(obj => obj.pId === item.id)]){
           //-- if have
           //-- get data old one
-          let currentData = this.cartItem[this.cartItem.findIndex(obj => obj.pId === item.pId)];
+          let currentData = this.cartItem[this.cartItem.findIndex(obj => obj.pId === item.id)];
           //--update qty
           currentData.qty = currentData.qty+1;
         }else{
           //-- if not have yet
           //--add new same the first loop
           let tmpData = {
-            pId: item.pId,
+            pId: item.id,
             qty: 1,
             price: item.pPriceSale ? item.pPriceSale: item.pPrice,
             data: item

@@ -44,7 +44,6 @@ import { TopBarComponent } from './top/top-bar/top-bar.component';
 import { PagenotfoundComponent } from './body/pagenotfound/pagenotfound.component';
 import { MaterialModule } from '../share/material-module';
 import { DialogComponent } from '../share/dialog/dialog.component';
-
 @NgModule({
   declarations: [
     TopBarComponent,
