@@ -13,6 +13,10 @@ This project not done 100% yet. but you can run it and play with it.
 
 6.e-commerce-server set server.js =>> see //-- RUN BD Migration
 
+6.1. // ####### 1. //--comment out and run at first time to init DB and Table after that comment it all again
+
+6.2. // ####### 2. //-- comment all no 1. and comment out no 2.
+
 7.e-commerce-server run command => npm run dev
 
 8.Front-end:: localhost:4200 and localhost:4200/admin
